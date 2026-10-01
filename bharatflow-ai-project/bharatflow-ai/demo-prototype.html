@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>BharatFlow AI · Civic Infrastructure Intelligence</title>
+<style>
+:root{--bg:#fff;--ink:#14213d;--mu:#5b6478;--ln:#e3e6ec;--soft:#f6f7f9;--pri:#1f3a6e;--ok:#15762b;--warn:#c2410c;--bad:#b42318;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1420;--ink:#eef1f7;--mu:#98a2b8;--ln:#252d40;--soft:#171e2e;--pri:#8fb0ff;--ok:#4ade80;--warn:#fb923c;--bad:#f87171}}
+:root[data-theme="dark"]{--bg:#0f1420;--ink:#eef1f7;--mu:#98a2b8;--ln:#252d40;--soft:#171e2e;--pri:#8fb0ff;--ok:#4ade80;--warn:#fb923c;--bad:#f87171}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+header{position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);border-bottom:1px solid var(--ln);z-index:5}
+.bar{max-width:1080px;margin:auto;padding:12px 20px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.logo{font-weight:700;letter-spacing:-.01em;font-size:17px}.logo span{color:var(--pri)}
+nav{display:flex;gap:4px;flex-wrap:wrap;flex:1}
+nav button,.btn{font:inherit;border:1px solid transparent;background:none;color:var(--mu);padding:6px 12px;border-radius:6px;cursor:pointer}
+nav button:hover{color:var(--ink)}nav button.on{color:var(--pri);background:var(--soft);font-weight:600}
+.btn{border-color:var(--ln);color:var(--ink)}.btn.p{background:var(--pri);color:var(--bg);border-color:var(--pri)}.btn:disabled{opacity:.5;cursor:default}
+.btn.s{padding:3px 9px;font-size:13px}
+select,input,textarea{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--ln);border-radius:6px;padding:8px 10px;width:100%}
+main{max-width:1080px;margin:auto;padding:28px 20px 60px}
+h1{font-size:clamp(28px,5vw,44px);line-height:1.15;letter-spacing:-.02em;margin:0 0 14px;font-weight:700}
+h2{font-size:22px;margin:0 0 6px;letter-spacing:-.01em}h3{font-size:15px;margin:0 0 6px}
+p{margin:0 0 12px}.mu{color:var(--mu)}.sm{font-size:13px}
+.tag{display:inline-block;font-size:12px;border:1px solid var(--ln);border-radius:99px;padding:1px 9px;color:var(--mu)}
+.demo{background:var(--soft);border-bottom:1px solid var(--ln);text-align:center;font-size:13px;color:var(--mu);padding:6px 12px}
+.grid{display:grid;gap:14px}.g3{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}.g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.card{border:1px solid var(--ln);border-radius:10px;padding:18px;background:var(--bg)}
+.kpi b{display:block;font-size:28px;letter-spacing:-.02em}.kpi span{color:var(--mu);font-size:13px}
+.steps{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:18px 0}.steps i{font-style:normal;color:var(--mu)}
+.steps span{border:1px solid var(--ln);border-radius:6px;padding:5px 12px;font-size:13px;font-weight:600}
+.hero{padding:36px 0 24px;max-width:720px}.hero p{font-size:18px;color:var(--mu)}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;min-width:720px}
+th,td{text-align:left;padding:10px 10px;border-bottom:1px solid var(--ln);font-size:14px;vertical-align:middle}th{color:var(--mu);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.04em}
+.p1{color:var(--bad)}.p2{color:var(--warn)}.p3{color:var(--pri)}.p4{color:var(--ok)}.pb{font-weight:700}
+.f{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}.f select{width:auto}
+label{display:block;font-size:13px;color:var(--mu);margin:12px 0 4px}
+.bar2{height:8px;border-radius:4px;background:var(--pri);opacity:.85}.br{display:grid;grid-template-columns:130px 1fr 28px;gap:10px;align-items:center;margin:8px 0;font-size:13px}
+.res dt{color:var(--mu);font-size:12px;text-transform:uppercase;letter-spacing:.04em}.res dd{margin:0 0 10px;font-weight:600}
+.ck{margin:4px 0;color:var(--mu)}.ck.d{color:var(--ok)}
+svg text{font-family:inherit}
+footer{border-top:1px solid var(--ln);color:var(--mu);font-size:13px;padding:18px 20px;text-align:center}
+#toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:9px 16px;border-radius:8px;font-size:13px;opacity:0;pointer-events:none;transition:.2s}
+#toast.on{opacity:1}
+</style></head><body>
+<div class="demo">Demo data — simulated complaints, rainfall and AI results. Not live government data.</div>
+<header><div class="bar"><div class="logo">Bharat<span>Flow</span> AI</div>
+<nav id="nav"></nav>
+<select id="role" style="width:auto" aria-label="Demo role"><option value="c">Role: Citizen</option><option value="a" selected>Role: Authority</option></select></div></header>
+<main id="app"></main>
+<footer>BharatFlow AI · From Civic Complaints to Civic Intelligence · Prototype for demonstration</footer>
+<div id="toast" role="status"></div>
+<script>
+const CATS={pothole:["Pothole","Road Maintenance"],garbage:["Garbage overflow","Sanitation"],leak:["Water leakage","Water Board"],flood:["Waterlogging","Drainage"],light:["Broken streetlight","Electrical"],signal:["Traffic signal","Traffic Police"],road:["Road damage","Road Maintenance"],manhole:["Open manhole","Drainage"],tree:["Fallen tree","Parks & Horticulture"],elec:["Electrical hazard","Electrical"]};
+const ST=["REPORTED","AI ANALYZED","ASSIGNED","IN PROGRESS","RESOLUTION SUBMITTED","AI VERIFIED","RESOLVED"];
+const ZONES={"Zone 1":[18,16],"Zone 2":[50,14],"Zone 3":[82,18],"Zone 4":[22,46],"Zone 5":[54,44],"Zone 6":[84,46]};
+const D=[["pothole","Zone 5",3,3,.8,.9,12,3],["flood","Zone 4",3,3,.9,.6,3,3],["flood","Zone 4",2,3,.9,.6,5,2],["manhole","Zone 4",3,3,.6,.7,2,1],["garbage","Zone 2",2,2,.5,.5,9,3],["light","Zone 1",1,2,.3,.4,15,6],["leak","Zone 3",2,2,.4,.5,7,4],["pothole","Zone 6",2,2,.5,.6,6,6],["signal","Zone 5",3,3,.7,1,1,2],["tree","Zone 2",2,3,.3,.5,2,3],["elec","Zone 3",3,3,.5,.7,4,4],["road","Zone 6",2,2,.4,.5,20,6],["garbage","Zone 1",1,1,.4,.3,11,6],["leak","Zone 5",2,1,.5,.4,8,5],["light","Zone 4",1,2,.3,.6,10,3],["flood","Zone 4",3,2,.8,.6,1,1]];
+let C=D.map((d,i)=>({id:"BF-"+(1001+i),cat:d[0],zone:d[1],sev:d[2],risk:d[3],dens:d[4],loc:d[5],age:d[6],st:d[7],x:ZONES[d[1]][0]+((i*7)%13)-6,y:ZONES[d[1]][1]+((i*5)%11)-5,demo:1}));
+const P=[{z:"Zone 4",k:"Waterlogging",s:87,f:["4 water-related complaints in the last 5 days","Heavy rainfall in the demo scenario (simulated)","Repeat waterlogging in past demo records","Dense complaint cluster near the drainage line"],a:"Inspect drainage channels and pre-position a response team."},{z:"Zone 5",k:"Road surface failure",s:71,f:["Pothole and signal faults on one arterial road","High traffic relevance","Complaints ageing beyond 10 days"],a:"Schedule road patching before peak traffic hours."},{z:"Zone 2",k:"Garbage overflow",s:58,f:["Rising sanitation complaints week on week","Market area with high footfall"],a:"Add a collection round and check bin capacity."},{z:"Zone 3",k:"Electrical hazard",s:49,f:["Electrical and water-leak complaints overlap","Older network segment"],a:"Inspect exposed lines and joints near the leak."}];
+const score=c=>Math.round(c.sev/3*30+c.risk/3*30+c.dens*15+c.loc*15+Math.min(c.age/14,1)*10);
+const lvl=s=>s>=80?1:s>=60?2:s>=40?3:4;const LN=["","P1 Critical","P2 High","P3 Medium","P4 Low"];
+const SEV=["","Low","Medium","High"];
+const $=s=>document.querySelector(s);const el=(h)=>{const t=document.createElement("template");t.innerHTML=h.trim();return t.content.firstChild};
+const toast=m=>{const t=$("#toast");t.textContent=m;t.className="on";clearTimeout(toast.t);toast.t=setTimeout(()=>t.className="",2200)};
+const isA=()=>$("#role").value==="a";
+let view="home",sel=null,fs="",fv="";
+const V={home,report,dash,map,forecast,analytics};
+const NAV=[["home","Overview"],["report","Report"],["dash","Dashboard"],["map","Map"],["forecast","Risk Forecast"],["analytics","Analytics"]];
+function go(v){view=v;sel=null;render();scrollTo(0,0)}
+function render(){$("#nav").innerHTML="";NAV.forEach(([k,n])=>{const b=el(`<button class="${k==view?"on":""}">${n}</button>`);b.onclick=()=>go(k);$("#nav").append(b)});$("#app").innerHTML="";$("#app").append(V[view]())}
+$("#role").onchange=render;
+function home(){return el(`<div><section class="hero"><span class="tag">Civic infrastructure intelligence</span><h1 style="margin-top:14px">From Civic Complaints to Civic Intelligence.</h1><p>BharatFlow AI helps city authorities detect, prioritise, predict and verify infrastructure problems — with every decision explained.</p><div class="row"><button class="btn p" onclick="go('report')">Report a problem</button><button class="btn" onclick="go('forecast')">Explore civic intelligence</button><button class="btn" onclick="$('#role').value='a';go('dash')">Authority dashboard</button></div></section>
+<div class="steps"><span>Report</span><i>→</i><span>AI understands</span><i>→</i><span>AI prioritises</span><i>→</i><span>Authority acts</span><i>→</i><span>AI verifies</span></div>
+<div class="grid g3" style="margin-top:8px">${[["Faster prioritisation","Every report gets a 0–100 score mapped to P1–P4."],["Predictive risk","Complaint clusters and rainfall point to trouble before it escalates."],["Transparent decisions","The factors behind each score are always visible."],["Assisted verification","Before/after photos are compared. Wording stays cautious: likely resolved, needs review."],["Reactive to proactive","Authorities see emerging hotspots, not just a queue."],["Works without paid APIs","Demo mode is fully functional; AI providers are configurable."]].map(x=>`<div class="card"><h3>${x[0]}</h3><p class="mu sm" style="margin:0">${x[1]}</p></div>`).join("")}</div></div>`)}
+function classify(t){t=t.toLowerCase();const m=[["pothole",/pothole|crater|road hole/],["flood",/flood|waterlog|water logging|drain|overflow of water|rain/],["manhole",/manhole/],["garbage",/garbage|trash|waste|dump/],["leak",/leak|pipe|burst/],["light",/street ?light|lamp|dark/],["signal",/signal|traffic light/],["tree",/tree|branch/],["elec",/wire|electric|transformer|pole|spark/],["road",/road|crack|damage/]];for(const[k,r]of m)if(r.test(t))return k;return null}
+function report(){const n=el(`<div class="grid g2"><div class="card"><h2>Report a problem</h2><p class="mu sm">Describe the issue and choose a location. In demo mode, analysis uses keyword rules on your text (photos are attached but not analysed).</p>
+<label>Description</label><textarea id="d" rows="4" placeholder="e.g. Large pothole near a busy road"></textarea>
+<label>Photo (optional)</label><input type="file" id="ph" accept="image/*">
+<label>Zone</label><select id="z">${Object.keys(ZONES).map(z=>`<option>${z}</option>`).join("")}</select>
+<div class="row"><button class="btn" id="gps">Use my location</button><span class="sm mu" id="ll" style="align-self:center"></span></div>
+<div class="row"><button class="btn p" id="go">Submit &amp; analyse</button></div></div><div class="card" id="out"><h2>AI analysis</h2><p class="mu sm">Results appear here after you submit.</p></div></div>`);
+n.querySelector("#gps").onclick=()=>{if(!navigator.geolocation)return toast("Geolocation not available");navigator.geolocation.getCurrentPosition(p=>n.querySelector("#ll").textContent=p.coords.latitude.toFixed(4)+", "+p.coords.longitude.toFixed(4),()=>toast("Location permission denied"))};
+n.querySelector("#go").onclick=async()=>{const t=n.querySelector("#d").value.trim();if(t.length<8)return toast("Please describe the problem (min 8 characters)");const out=n.querySelector("#out");const k=classify(t);
+const urgent=/busy|school|hospital|accident|child|danger|deep|large|big|open/i.test(t);const zone=n.querySelector("#z").value;
+out.innerHTML="<h2>Analysing your report…</h2>";for(const s of ["Text analysed","Problem identified","Severity calculated","Safety risk analysed","Department identified","Priority generated"]){await new Promise(r=>setTimeout(r,320));out.append(el(`<div class="ck d">✓ ${s}</div>`))}
+if(!k){out.innerHTML=`<h2>Could not identify the problem</h2><p class="mu">Please add more detail (for example: pothole, garbage, leak, streetlight).</p>`;return}
+const c={id:"BF-"+(1001+C.length),cat:k,zone,sev:urgent?3:2,risk:urgent?3:2,dens:Math.min(1,C.filter(x=>x.zone==zone&&x.cat==k).length/3+.2),loc:urgent?.8:.5,age:0,st:1,x:ZONES[zone][0]+8,y:ZONES[zone][1]+8,mine:1};C.unshift(c);const s=score(c);
+out.innerHTML=`<h2>AI analysis <span class="tag">Demo · rule-based</span></h2><dl class="res"><dt>Complaint</dt><dd>${c.id}</dd><dt>Problem</dt><dd>${CATS[k][0]}</dd><dt>Severity / Safety risk</dt><dd>${SEV[c.sev]} / ${SEV[c.risk]}</dd><dt>Priority</dt><dd class="p${lvl(s)}">${LN[lvl(s)]} · score ${s}</dd><dt>Recommended department</dt><dd>${CATS[k][1]}</dd></dl><p class="sm mu">Confidence is not shown because demo mode uses keyword rules, not a trained model.</p><div class="row"><button class="btn p" onclick="go('dash')">View in dashboard</button></div>`;toast("Complaint "+c.id+" created")};
+return n}
+function kpis(){const o=C.filter(c=>c.st<7),cr=C.filter(c=>lvl(score(c))==1&&c.st<7);return[["Total reports",C.length],["Critical open",cr.length],["Open",o.length],["Resolved",C.length-o.length],["Predicted risk zones",P.filter(p=>p.s>=60).length],["Avg. resolution","2.8 days"]]}
+function dash(){const list=()=>C.filter(c=>(!fs||ST[c.st-1]==fs)&&(!fv||lvl(score(c))==fv)).sort((a,b)=>score(b)-score(a));
+const n=el(`<div><h2>Authority dashboard</h2><p class="mu sm">Sorted by AI priority. ${isA()?"":"Switch to the Authority role to take actions."}</p><div class="grid g3" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin:16px 0">${kpis().map(k=>`<div class="card kpi"><b>${k[1]}</b><span>${k[0]}</span></div>`).join("")}</div>
+<div class="f"><select id="fs"><option value="">All statuses</option>${ST.map(s=>`<option ${s==fs?"selected":""}>${s}</option>`).join("")}</select><select id="fv"><option value="">All priorities</option>${[1,2,3,4].map(i=>`<option value="${i}" ${fv==i?"selected":""}>${LN[i]}</option>`).join("")}</select></div>
+<div class="card wrap" style="padding:0"><table><thead><tr><th>ID</th><th>Problem</th><th>Zone</th><th>Priority</th><th>Department</th><th>Status</th><th>Age</th><th></th></tr></thead><tbody id="tb"></tbody></table></div><div id="panel"></div></div>`);
+const draw=()=>{const tb=n.querySelector("#tb");tb.innerHTML="";const L=list();if(!L.length)tb.innerHTML=`<tr><td colspan=8 class="mu">No complaints match these filters.</td></tr>`;L.forEach(c=>{const s=score(c),tr=el(`<tr><td>${c.id}${c.mine?' <span class="tag">new</span>':""}</td><td>${CATS[c.cat][0]}</td><td>${c.zone}</td><td class="pb p${lvl(s)}">${LN[lvl(s)].split(" ")[0]} · ${s}</td><td>${CATS[c.cat][1]}</td><td>${ST[c.st-1]}</td><td>${c.age}d</td><td></td></tr>`);const b=el(`<button class="btn s">Open</button>`);b.onclick=()=>{sel=c;panel()};tr.lastChild.append(b);tb.append(tr)})};
+const panel=()=>{const p=n.querySelector("#panel");p.innerHTML="";if(sel)p.append(detail(sel,()=>{draw();panel();kp()}));p.scrollIntoView({behavior:"smooth"})};
+const kp=()=>{n.querySelectorAll(".kpi b").forEach((b,i)=>b.textContent=kpis()[i][1])};
+n.querySelector("#fs").onchange=e=>{fs=e.target.value;draw()};n.querySelector("#fv").onchange=e=>{fv=e.target.value;draw()};draw();return n}
+function detail(c,done){const s=score(c),l=lvl(s);const f=[["Severity",c.sev/3*30,30],["Safety risk",c.risk/3*30,30],["Report density",c.dens*15,15],["Location impact",c.loc*15,15],["Complaint age",Math.min(c.age/14,1)*10,10]];
+const n=el(`<div class="card" style="margin-top:16px"><div class="row" style="margin:0 0 10px;justify-content:space-between"><h2 style="margin:0">${c.id} · ${CATS[c.cat][0]}</h2><button class="btn s" id="x">Close</button></div><p class="mu sm">${c.zone} · ${CATS[c.cat][1]} · ${ST[c.st-1]} · Priority <b class="p${l}">${LN[l]}</b> (score ${s}/100)</p><h3>Why this priority</h3>${f.map(x=>`<div class="br"><span>${x[0]}</span><div><div class="bar2" style="width:${x[1]/x[2]*100}%"></div></div><span>${Math.round(x[1])}</span></div>`).join("")}<div id="v"></div><div class="row" id="ac"></div></div>`);
+n.querySelector("#x").onclick=()=>{sel=null;n.remove()};const ac=n.querySelector("#ac"),v=n.querySelector("#v");
+if(c.ver)v.innerHTML=c.ver;
+if(!isA()){ac.innerHTML=`<span class="sm mu">Actions are available to authority users.</span>`;return n}
+const mk=(t,fn,p)=>{const b=el(`<button class="btn ${p?"p":""}">${t}</button>`);b.onclick=fn;ac.append(b)};
+if(c.st<4)mk(c.st<3?"Assign to "+CATS[c.cat][1]:"Start work",()=>{c.st++;toast("Status: "+ST[c.st-1]);done()},1);
+else if(c.st==4){ac.innerHTML=`<input type="file" id="rp" accept="image/*" style="max-width:260px"><button class="btn p" id="vr">Submit resolution &amp; run AI verification</button>`;ac.querySelector("#vr").onclick=()=>{const has=ac.querySelector("#rp").files.length>0;c.st=5;
+c.ver=has?`<div class="card" style="margin-top:12px;background:var(--soft)"><h3>Resolution verification <span class="tag">Simulated</span></h3><p class="sm" style="margin:0"><b>Likely resolved.</b> Visual change: high. Manual confirmation recommended.</p></div>`:`<div class="card" style="margin-top:12px;background:var(--soft)"><h3>Resolution verification <span class="tag">Simulated</span></h3><p class="sm" style="margin:0"><b>Insufficient visual evidence.</b> No resolution photo uploaded — needs review.</p></div>`;
+c.needs=!has;toast(has?"Resolution submitted":"Needs review");done()}}
+else if(c.st==5||c.st==6){mk(c.needs&&c.st==5?"Confirm manually":"Mark resolved",()=>{c.st=7;c.needs=0;toast("Complaint resolved");done()},1)}
+else ac.innerHTML=`<span class="sm" style="color:var(--ok)">✓ Resolved</span>`;
+return n}
+function map(){const n=el(`<div><h2>Hotspot map</h2><p class="mu sm">Schematic city view (demo geography). Dashed circles are predicted risk zones. Select a marker for details.</p><div class="grid g2" style="grid-template-columns:2fr 1fr"><div class="card" style="padding:8px"><svg viewBox="0 0 100 62" width="100%" role="img" aria-label="City map with complaint markers"><rect width="100" height="62" rx="2" fill="var(--soft)"/><g stroke="var(--ln)" stroke-width=".8" fill="none"><path d="M0 30H100M0 56H100M34 0V62M68 0V62M0 8L100 40"/></g>${Object.entries(ZONES).map(([z,p])=>`<text x="${p[0]-5}" y="${p[1]-9}" font-size="2.6" fill="var(--mu)">${z}</text>`).join("")}${P.filter(p=>p.s>=50).map(p=>`<circle cx="${ZONES[p.z][0]}" cy="${ZONES[p.z][1]}" r="${p.s/9}" fill="none" stroke="var(--warn)" stroke-dasharray="1.2 1" stroke-width=".4"/>`).join("")}<g id="mk"></g></svg><div class="sm mu" style="padding:4px 8px">● P1 <span class="p1">red</span> · P2 <span class="p2">orange</span> · P3 <span class="p3">blue</span> · P4 <span class="p4">green</span> · hollow = resolved</div></div><div class="card" id="dt"><p class="mu sm">Select a marker.</p></div></div></div>`);
+const col=["","var(--bad)","var(--warn)","var(--pri)","var(--ok)"];const g=n.querySelector("#mk");
+C.forEach(c=>{const s=score(c),m=document.createElementNS("http://www.w3.org/2000/svg","circle");m.setAttribute("cx",c.x);m.setAttribute("cy",c.y);m.setAttribute("r",1.7);m.setAttribute("fill",c.st==7?"var(--bg)":col[lvl(s)]);m.setAttribute("stroke",col[lvl(s)]);m.setAttribute("stroke-width",.6);m.style.cursor="pointer";m.onclick=()=>{n.querySelector("#dt").innerHTML=`<h3>${c.id}</h3><dl class="res"><dt>Category</dt><dd>${CATS[c.cat][0]}</dd><dt>Severity</dt><dd>${SEV[c.sev]}</dd><dt>Priority</dt><dd class="p${lvl(s)}">${LN[lvl(s)]} · ${s}</dd><dt>Status</dt><dd>${ST[c.st-1]}</dd><dt>Location</dt><dd>${c.zone}</dd><dt>Department</dt><dd>${CATS[c.cat][1]}</dd><dt>Reported</dt><dd>${c.age} day(s) ago</dd></dl>`};g.append(m)});return n}
+function forecast(){return el(`<div><h2>Civic Risk Forecast</h2><p class="mu sm">Predicted zones from complaint density, category history and rainfall. All inputs here are <b>simulated demo data</b>; real deployments would connect an official weather source.</p><div class="grid" style="margin-top:14px">${P.map(p=>`<div class="card"><div class="row" style="margin:0 0 6px;justify-content:space-between"><h3 style="margin:0">${p.z} · ${p.k}</h3><b class="${p.s>=80?"p1":p.s>=60?"p2":"p3"}">${p.s>=80?"High":p.s>=60?"Elevated":"Watch"} · ${p.s}/100</b></div><div class="bar2" style="width:${p.s}%;margin-bottom:12px"></div><ul class="sm" style="margin:0 0 10px;padding-left:18px;color:var(--mu)">${p.f.map(f=>`<li>${f}</li>`).join("")}</ul><p class="sm" style="margin:0"><b>Recommended action:</b> ${p.a}</p></div>`).join("")}</div></div>`)}
+function analytics(){const cnt=(f)=>{const m={};C.forEach(c=>{const k=f(c);m[k]=(m[k]||0)+1});return Object.entries(m).sort((a,b)=>b[1]-a[1])};
+const bars=(a)=>{const mx=Math.max(...a.map(x=>x[1]));return a.map(x=>`<div class="br"><span>${x[0]}</span><div><div class="bar2" style="width:${x[1]/mx*100}%"></div></div><span>${x[1]}</span></div>`).join("")};
+return el(`<div><h2>Analytics</h2><p class="mu sm">Live from the current demo dataset, including complaints you add.</p><div class="grid g2" style="margin-top:14px"><div class="card"><h3>Reports by category</h3>${bars(cnt(c=>CATS[c.cat][0]))}</div><div class="card"><h3>Reports by zone</h3>${bars(cnt(c=>c.zone))}</div><div class="card"><h3>Priority distribution</h3>${bars(cnt(c=>LN[lvl(score(c))]))}</div><div class="card"><h3>Department workload (open)</h3>${bars(cnt(c=>c.st<7?CATS[c.cat][1]:null).filter(x=>x[0]!="null"))}</div></div></div>`)}
+render();
+</script></body></html>
